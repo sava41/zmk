@@ -20,4 +20,10 @@ config ZMK_BLE
 config ZMK_USB
     default y
 
+config BT_MAX_CONN
+    default 3
+
+config BT_MAX_PAIRED
+    default 3
+
 endif # BOARD_ORB69
