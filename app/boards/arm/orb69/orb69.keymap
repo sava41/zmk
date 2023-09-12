@@ -40,7 +40,7 @@
                 &kp LCTRL &kp LGUI &kp LALT               &kp SPACE                &kp RALT  &mo 1   &kp RCTRL     &kp UP
                                             &kp SPACE                &kp SPACE                            &kp LEFT &kp DOWN &kp RIGHT
 
-                &bt_ht 0 0 &trans
+                &bt_ht 0 0
             >;
         };
 

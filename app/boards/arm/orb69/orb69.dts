@@ -9,6 +9,14 @@
     model = "orb69";
     compatible = "orb,69";
 
+    aliases {
+        led-pwr-r = &led_0;
+        led-pwr-g = &led_1;
+        led-bt-0  = &led_2;
+        led-bt-1  = &led_3;
+        led-bt-2  = &led_4;
+    };
+
     chosen {
         zephyr,code-partition = &code_partition;
         zephyr,sram = &sram0;
@@ -96,6 +104,30 @@
         io-channels = <&adc 7>;
         output-ohms = <2000000>;
         full-ohms = <(2000000 + 806000)>;
+    };
+
+    leds {
+        compatible = "gpio-leds";
+        led_0: led_0 {
+            gpios = <&gpio0 30 GPIO_ACTIVE_LOW>;
+            label = "Power led red";
+        };
+        led_1: led_1 {
+            gpios = <&gpio0 29 GPIO_ACTIVE_LOW>;
+            label = "Power led green";
+        };
+        led_2: led_2 {
+            gpios = <&gpio0 27 GPIO_ACTIVE_LOW>;
+            label = "Bluetooth led profile 0";
+        };
+        led_3: led_3 {
+            gpios = <&gpio0 26 GPIO_ACTIVE_LOW>;
+            label = "Bluetooth led profile 1";
+        };
+        led_4: led_4 {
+            gpios = <&gpio0 25 GPIO_ACTIVE_LOW>;
+            label = "Bluetooth led profile 2";
+        };
     };
 };
 
