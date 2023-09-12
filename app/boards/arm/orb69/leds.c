@@ -61,9 +61,11 @@ static int led_peripheral_listener_cb(const zmk_event_t *eh) {
         return -1;
     }
 
-    if (zmk_split_bt_peripheral_is_connected()) {
+    if (zmk_ble_active_profile_is_connected()) {
         blink.num_blinks = 3;
     } else if (zmk_ble_active_profile_is_open()) {
+        blink.num_blinks = -1;
+    } else {
         blink.num_blinks = -1;
     }
 
