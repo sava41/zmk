@@ -8,13 +8,19 @@
 
 #include <zmk/events/position_state_changed.h>
 
+#define ZMK_LAYER_CHILD_LEN_PLUS_ONE(node) 1 +
+#define ZMK_KEYMAP_LAYERS_LEN                                                                      \
+    (DT_FOREACH_CHILD(DT_INST(0, zmk_keymap), ZMK_LAYER_CHILD_LEN_PLUS_ONE) 0)
+
 typedef uint32_t zmk_keymap_layers_state_t;
 
 uint8_t zmk_keymap_layer_default();
 zmk_keymap_layers_state_t zmk_keymap_layer_state();
 bool zmk_keymap_layer_active(uint8_t layer);
+bool zmk_keymap_layer_momentary(uint8_t layer);
+bool zmk_keymap_layers_any_momentary(zmk_keymap_layers_state_t layers_mask);
 uint8_t zmk_keymap_highest_layer_active();
-int zmk_keymap_layer_activate(uint8_t layer);
+int zmk_keymap_layer_activate(uint8_t layer, bool momentary);
 int zmk_keymap_layer_deactivate(uint8_t layer);
 int zmk_keymap_layer_toggle(uint8_t layer);
 int zmk_keymap_layer_to(uint8_t layer);
