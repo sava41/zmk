@@ -42,9 +42,6 @@ K_MSGQ_DEFINE(led_msgq, sizeof(struct blink_item), 16, 4);
 #if IS_ENABLED(CONFIG_ZMK_BLE)
 static int led_peripheral_listener_cb(const zmk_event_t *eh) {
 
-    // reset message queue. we only support one led blinking at a time
-    k_msgq_purge(&led_msgq);
-
     struct blink_item blink;
 
     switch (zmk_ble_active_profile_index()) {
@@ -61,14 +58,14 @@ static int led_peripheral_listener_cb(const zmk_event_t *eh) {
         return -1;
     }
 
-    if (zmk_ble_active_profile_is_connected()) {
-        blink.num_blinks = 3;
-    } else if (zmk_ble_active_profile_is_open()) {
+    if (zmk_ble_active_profile_is_open()) {
         blink.num_blinks = -1;
     } else {
-        blink.num_blinks = -1;
+        blink.num_blinks = 3;
     }
 
+    // reset message queue. we only support one led blinking at a time
+    k_msgq_purge(&led_msgq);
     k_msgq_put(&led_msgq, &blink, K_NO_WAIT);
     return 0;
 }

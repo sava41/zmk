@@ -4,12 +4,6 @@ if BOARD_ORB69
 config ZMK_KEYBOARD_NAME
     default "orb69"
 
-config USB_DEVICE_MANUFACTURER
-    default "Sava >:)"
-
-config BT_DIS_MANUF
-    default "Sava >:)"
-
 if USB_DEVICE_STACK
 
 config USB_NRFX
@@ -26,18 +20,12 @@ config ZMK_BLE
 config ZMK_USB
     default y
 
-config BT_MAX_CONN
-    default 3
-
-config BT_MAX_PAIRED
-    default 3
-
 config LED
     default y
 
 config LED_WIDGET_INTERVAL_MS
     int "Minimum wait duration between two blinks in ms"
-    default 500
+    default 200
 
 config LED_WIDGET_BATTERY_LEVEL_CRITICAL
     int "Critical battery level percentage"
