@@ -64,8 +64,6 @@ static int led_peripheral_listener_cb(const zmk_event_t *eh) {
         blink.num_blinks = 3;
     }
 
-    // reset message queue. we only support one led blinking at a time
-    k_msgq_purge(&led_msgq);
     k_msgq_put(&led_msgq, &blink, K_NO_WAIT);
     return 0;
 }
@@ -120,7 +118,10 @@ extern void led_blink_thread(void *d0, void *d1, void *d2) {
             blink.num_blinks--;
         }
 
-        k_msgq_put(&led_msgq, &blink, K_NO_WAIT);
+        // Only support one led blinking at a time. Only continue blinking if no other led is queued
+        if (k_msgq_peek(&led_msgq, NULL) != 0) {
+            k_msgq_put(&led_msgq, &blink, K_NO_WAIT);
+        }
 
         // wait interval before processing another blink
         k_sleep(K_MSEC(CONFIG_LED_WIDGET_INTERVAL_MS));
