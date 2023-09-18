@@ -1,6 +1,7 @@
 #include <behaviors.dtsi>
 #include <dt-bindings/zmk/keys.h>
 #include <dt-bindings/zmk/bt.h>
+#include <dt-bindings/zmk/mouse.h>
 
 / {
     macros {
@@ -38,7 +39,7 @@
                 &none     &kp A  &kp S  &kp D  &kp F  &kp G  &kp H  &kp J  &kp K  &kp L  &kp SEMI &kp SQT        &kp RET    &kp DEL
                 &kp LSHFT   &kp Z  &kp X  &kp C  &kp V  &kp B  &kp N  &kp M  &kp COMMA &kp DOT &kp FSLH      &kp RSHFT 
                 &kp LCTRL &kp LGUI &kp LALT               &kp SPACE                &kp RALT  &mo 1   &kp RCTRL     &kp UP
-                                            &kp SPACE                &kp SPACE                            &kp LEFT &kp DOWN &kp RIGHT
+                                              &mkp LCLK                 &mkp RCLK                         &kp LEFT &kp DOWN &kp RIGHT
 
                 &bt_ht 0 0
             >;
