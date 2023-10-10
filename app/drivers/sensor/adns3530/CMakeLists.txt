@@ -2,7 +2,7 @@
 # SPDX-License-Identifier: MIT
 
 zephyr_include_directories(.)
-zephyr_include_directories_ifdef(CONFIG_ADNS_3530)
+zephyr_include_directories_ifdef(CONFIG_ADNS3530)
 
 zephyr_library()
 
