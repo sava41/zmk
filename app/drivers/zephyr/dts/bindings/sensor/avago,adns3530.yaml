@@ -1,0 +1,21 @@
+# Copyright (c) 2023 The ZMK Contributors
+# SPDX-License-Identifier: MIT
+description: |
+  Sensor driver for the avago adsn 3530 optical mouse sensoe
+compatible: "avago,adns3530"
+
+include: spi-device.yaml
+
+properties:
+  #cs-gpios:
+  #  type: phandle-array
+  #  required: true
+  #  description: chip select pin for the sensor
+  motswk-gpio:
+    type: int
+    required: false
+    description: interrupt pin for motion
+  disable-rest:
+    type: boolean
+    description: disables mouse rest mode, will decrease battery life
+    required: false

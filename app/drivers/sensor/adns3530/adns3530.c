@@ -10,16 +10,11 @@
 
 #include "adns3530.h"
 
-#include <drivers/spi.h>
-#include <errno.h>
-#include <device.h>
-#include <drivers/gpio.h>
-#include <sys/util.h>
-#include <sys/byteorder.h>
-#include <kernel.h>
-#include <drivers/sensor.h>
-#include <sys/__assert.h>
-#include <logging/log.h>
+#include <zephyr/device.h>
+#include <zephyr/sys/byteorder.h>
+#include <zephyr/kernel.h>
+#include <zephyr/sys/__assert.h>
+#include <zephyr/logging/log.h>
 
 LOG_MODULE_REGISTER(ADNS3530, CONFIG_SENSOR_LOG_LEVEL);
 

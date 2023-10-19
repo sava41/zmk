@@ -2,18 +2,18 @@
  * Copyright (c) 2023 The ZMK Contributors
  *
  * SPDX-License-Identifier: MIT
- * 
+ *
  * Based on luberry pmw3xx drivers https://github.com/slicemk/zmk/compare/main...Luberry:zmk:pmw3389
  */
 
 #ifndef ZEPHYR_DRIVERS_SENSOR_ADNS3530_H_
 #define ZEPHYR_DRIVERS_SENSOR_ADNS3530_H_
 
-#include <drivers/sensor.h>
+#include <zephyr/drivers/sensor.h>
 #include <zephyr/types.h>
-#include <drivers/gpio.h>
-#include <sys/util.h>
-#include <drivers/spi.h>
+#include <zephyr/drivers/gpio.h>
+#include <zephyr/sys/util.h>
+#include <zephyr/drivers/spi.h>
 
 #define ADNS3530_WR_MASK 0x80
 #define ADNS3530_RD_MASK 0x7F
@@ -128,7 +128,7 @@ int adns3530_spi_init(const struct device *dev);
 #ifdef CONFIG_ADNS3530_TRIGGER
 
 int adns3530_trigger_set(const struct device *dev, const struct sensor_trigger *trig,
-                        sensor_trigger_handler_t handler);
+                         sensor_trigger_handler_t handler);
 
 int adns3530_init_interrupt(const struct device *dev);
 
