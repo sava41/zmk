@@ -6,7 +6,7 @@
  * Based on luberry pmw3xx drivers https://github.com/slicemk/zmk/compare/main...Luberry:zmk:pmw3389
  */
 
-#define DT_DRV_COMPAT adns3530
+#define DT_DRV_COMPAT avago_adns3530
 
 #include "adns3530.h"
 
@@ -268,14 +268,14 @@ static int adns3530_init(const struct device *dev) {
         .bus_cfg = {.spi_cfg = ADNS3530_SPI_CFG(n)},                                               \
         .disable_rest = DT_INST_NODE_HAS_PROP(n, disable_rest),                                    \
         COND_CODE_1(CONFIG_ADNS3530_TRIGGER,                                                       \
-                    (, ADNS3530_GPIO_DT_SPEC_GET_BY_IDX(DT_DRV_INST(n), motswk_gpio, 0)), ())      \
+                    (ADNS3530_GPIO_DT_SPEC_GET_BY_IDX(DT_DRV_INST(n), motswk_gpios, 0)), ())       \
     }
 
-#define ADNS3530_INST(n)                                                                           \
+#define ADNS3530_DEFINE(n)                                                                         \
     static struct adns3530_data adns3530_data_##n = ADNS3530_DATA_SPI(n);                          \
     static const struct adns3530_config adns3530_cfg_##n = ADNS3530_CONFIG_SPI(n);                 \
     DEVICE_DT_INST_DEFINE(n, adns3530_init, device_pm_control_nop, &adns3530_data_##n,             \
                           &adns3530_cfg_##n, POST_KERNEL, CONFIG_SENSOR_INIT_PRIORITY,             \
                           &adns3530_driver_api);
 
-DT_INST_FOREACH_STATUS_OKAY(ADNS3530_INST)
+DT_INST_FOREACH_STATUS_OKAY(ADNS3530_DEFINE)

@@ -1,8 +1,10 @@
 # Copyright (c) 2023 The ZMK Contributors
 # SPDX-License-Identifier: MIT
 
-config ADNS3530
+menuconfig ADNS3530
 	bool "ADNS3530 Mouse Sensor"
+	default y
+	depends on DT_HAS_AVAGO_ADNS3530_ENABLED
 	depends on SPI
 	help
 	  Enable mouse sensor
