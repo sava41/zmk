@@ -139,15 +139,14 @@
     mosi-pin = <5>;
     miso-pin = <7>;
 
-    cs-gpios = <&gpio0 9 GPIO_ACTIVE_LOW>;
-
     mouse: mouse@0 {
         compatible = "avago,adns3530";
+        label = "adns3530";
         status = "okay";
         reg = <0>;
         spi-max-frequency = <1000000>;
-        label = "ADNS3530";
-        motswk-gpio = <3>;
+        motswk-gpios = <&gpio0 3 GPIO_ACTIVE_LOW>;
+        cs-gpios = <&gpio0 9 GPIO_ACTIVE_LOW>;
     };
 };
 
