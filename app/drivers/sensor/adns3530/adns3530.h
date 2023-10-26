@@ -86,7 +86,6 @@ struct adns3530_config {
     int (*bus_init)(const struct device *dev);
     const union adns3530_bus_cfg bus_cfg;
     bool disable_rest;
-    int cpi;
 #if CONFIG_ADNS3530_TRIGGER
     struct adns3530_gpio_dt_spec motswk_spec;
 #endif // CONFIG_ADNS3530_TRIGGER

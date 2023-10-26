@@ -4,7 +4,7 @@
  * SPDX-License-Identifier: MIT
  */
 
-#define DT_DRV_COMPAT adns3530
+#define DT_DRV_COMPAT avago_adns3530
 
 #include <zephyr/device.h>
 #include <zephyr/drivers/gpio.h>
@@ -62,8 +62,10 @@ static void adns3530_thread(int dev_ptr, int unused) {
     ARG_UNUSED(unused);
 
     while (1) {
-        k_sem_take(&drv_data->gpio_sem, K_FOREVER);
-        adns3530_thread_cb(dev);
+        k_sleep(K_MSEC(500));
+        LOG_WRN("lol\n");
+        // k_sem_take(&drv_data->gpio_sem, K_FOREVER);
+        // adns3530_thread_cb(dev);
     }
 }
 #endif
